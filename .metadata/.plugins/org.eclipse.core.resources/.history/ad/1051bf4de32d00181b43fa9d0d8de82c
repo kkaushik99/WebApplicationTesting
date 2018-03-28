@@ -1,0 +1,20 @@
+<suite name="Scenarios Testing">
+
+ <test name="onFirefox">
+<parameter name="Browser" value="firefox"/>
+
+ <classes>
+  <class name="com.GRID.NewToursApplicationLogInTest"/>
+ </classes>
+</test>
+
+
+<test name="onChrome">
+<parameter name="Browser" value="chrome"/>
+
+ <classes>
+  <class name="com.GRID.NewToursApplicationLogInTest"/>
+ </classes>
+</test>
+
+</suite>

@@ -1,0 +1,56 @@
+package newToursApplicationLogInTest;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class LogInTesting 
+
+{
+	FirefoxDriver driver;
+	
+	@Given("^Open FireFox Browser and Navigate to NewTours Application$")
+	public void Open_FireFox_Browser_and_Navigate_to_NewTours_Application() 
+	{
+		driver = new FirefoxDriver();
+		driver.get("http://newtours.demoaut.com");
+		
+	}
+
+	@When("^User Enters Valid UserName and Password and Click on SignIn button$")
+	public void User_Enters_Valid_UserName_and_Password_and_Click_on_SignIn_button() 
+	{
+		driver.findElement(By.name("userName")).sendKeys("tutorial");
+		driver.findElement(By.name("password")).sendKeys("tutorial");
+		
+		driver.findElementByName("login").click();
+		
+		
+	}
+
+	@Then("^User should be able to successfully Navigate to the Next WebPage and close the Browser$")
+	public void User_should_be_able_to_successfully_Navigate_to_the_Next_WebPage_and_close_the_Browser()  
+	{
+	 
+		System.out.println(driver.getTitle());
+		System.out.println(driver.getCurrentUrl());
+		
+	String ExpectedTItle="Find";
+	String ActualTitle=driver.getTitle();
+	
+	if(ActualTitle.contains(ExpectedTItle))
+	{
+		System.out.println("Title Matched , User Successfully Logged In to the application-- PASS");
+	}
+		
+	else
+	{
+		System.out.println("Title Not Matched , User failed to LogIn -- FAIL");
+	}
+
+	driver.close();
+	}
+}
